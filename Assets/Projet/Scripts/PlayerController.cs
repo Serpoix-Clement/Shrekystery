@@ -19,5 +19,9 @@ public class PlayerController : MonoBehaviour
         {
             hacheEnMain.SetActive(true);
         }
+        else
+        {
+            hacheEnMain.SetActive(false);
+        }
     }
 }

@@ -14,6 +14,7 @@ public class Planche_Behaviour : MonoBehaviour
             {
                 colliderPlanche.enabled = false;
                 gameObject.SetActive(false);
+                other.GetComponent<PlayerController>().hache = false;
             }
         }
     }
