@@ -13,6 +13,7 @@ public class Planche_Behaviour : MonoBehaviour
             if (other.GetComponent<PlayerController>().hache == true)
             {
                 colliderPlanche.enabled = false;
+                other.GetComponent<PlayerController>().hache = false;
                 gameObject.SetActive(false);
             }
         }
