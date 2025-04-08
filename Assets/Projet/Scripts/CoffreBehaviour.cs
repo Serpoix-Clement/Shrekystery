@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class CoffreBehaviour : MonoBehaviour
 {
-    //public Canvas canvas;
+    [Header("Canvas pour demander la touche E")]
+    public Canvas canvas;
     private bool dansLaZone;
+    private bool coffreOuvert;
     public GameObject couvercle;
     private Light lumiere;
 
     private void Start()
     {
         lumiere = GetComponent<Light>();
+        coffreOuvert = false;
+        canvas.enabled = false;
     }
 
     private void Update()
@@ -24,6 +28,7 @@ public class CoffreBehaviour : MonoBehaviour
                 PlayerController.Instance.cleFinal = false;
                 couvercle.SetActive(false);
                 lumiere.enabled = true;
+                coffreOuvert = true;
             }
         }
     }
@@ -33,6 +38,10 @@ public class CoffreBehaviour : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             dansLaZone = true;
+            if(!coffreOuvert)
+            {
+                canvas.enabled = true;
+            }
         }
     }
 
@@ -48,6 +57,10 @@ public class CoffreBehaviour : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             dansLaZone = false;
+            if(!coffreOuvert)
+            {
+                canvas.enabled = false;
+            }
         }
     }
 }
