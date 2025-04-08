@@ -16,6 +16,13 @@ public class Planche_Behaviour : MonoBehaviour
                 other.GetComponent<PlayerController>().hache = false;
                 gameObject.SetActive(false);
             }
+
+            if (other.GetComponent<PlayerController>().scie == true)
+            {
+                colliderPlanche.enabled = false;
+                other.GetComponent<PlayerController>().scie = false;
+                gameObject.SetActive(false);
+            }
         }
     }
 }

@@ -24,7 +24,6 @@ public class CleGlaconBehaviour : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("glacon ramassé");
                 coll.gameObject.GetComponent<PlayerController>().glacon = true;
                 glaconRamasse = true;
                 canvas.enabled = false;
@@ -47,10 +46,8 @@ public class CleGlaconBehaviour : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        Debug.Log("dans la zone de glaçon");
         if (other.CompareTag("Player"))
         {
-            Debug.Log("glacon a detecte joueur");
             dansZoneDeGlacon = true;
             
         }

@@ -8,12 +8,8 @@ public class FireScript : MonoBehaviour
     {
         if (PlayerController.Instance.glacon)
         {
-            Debug.Log("Le glaçon a fondu, vous avez la clé");
+            PlayerController.Instance.glacon = false;
             PlayerController.Instance.cleFinal = true;
-        }
-        else
-        {
-            Debug.Log("Voici une source de chaleur");
         }
     }
 }
