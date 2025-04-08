@@ -9,7 +9,7 @@ public class CleGlaconBehaviour : MonoBehaviour
     private Collider coll;
 
     public bool glaconRamasse;
-    private bool dansZoneDeGlacon;
+    public bool dansZoneDeGlacon;
 
     void Start()
     {
@@ -37,19 +37,11 @@ public class CleGlaconBehaviour : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             coll = other;
+            dansZoneDeGlacon = true;
             if(!glaconRamasse)
             {
                 canvas.enabled = true;
             }
-        }
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            dansZoneDeGlacon = true;
-            
         }
     }
 

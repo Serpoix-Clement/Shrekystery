@@ -29,6 +29,7 @@ public class CoffreBehaviour : MonoBehaviour
                 couvercle.SetActive(false);
                 lumiere.enabled = true;
                 coffreOuvert = true;
+                canvas.enabled = false;
             }
         }
     }
@@ -38,7 +39,7 @@ public class CoffreBehaviour : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             dansLaZone = true;
-            if(!coffreOuvert)
+            if(!coffreOuvert && PlayerController.Instance.cleFinal == true)
             {
                 canvas.enabled = true;
             }
@@ -57,7 +58,7 @@ public class CoffreBehaviour : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             dansLaZone = false;
-            if(!coffreOuvert)
+            if(!coffreOuvert && PlayerController.Instance.cleFinal == true)
             {
                 canvas.enabled = false;
             }
