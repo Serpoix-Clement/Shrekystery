@@ -7,7 +7,9 @@ public class PlayerController : MonoBehaviour
     public bool hache;
     public bool glacon;
     public bool cleFinal;
-    public GameObject hacheEnMain;
+    public GameObject hacheEnMainGO;
+    public GameObject cleGO;
+    public GameObject glaconGO;
     public static PlayerController Instance;
 
     void Start()
@@ -15,19 +17,29 @@ public class PlayerController : MonoBehaviour
         hache = false;
         glacon = false;
         cleFinal = false;
-        hacheEnMain.SetActive(false);
+        hacheEnMainGO.SetActive(false);
         Instance = this;
     }
 
     void Update()
     {
-        if (hache == true)
+        if (hache)
         {
-            hacheEnMain.SetActive(true);
+            hacheEnMainGO.SetActive(true);
+        }
+        else if (glacon)
+        {
+            cleGO.SetActive(true);
+            glaconGO.SetActive(true);
+        }
+        if (cleFinal && glacon)
+        {
+            cleGO.SetActive(true);
+            glaconGO.SetActive(false);
         }
         else
         {
-            hacheEnMain.SetActive(false);
+            hacheEnMainGO.SetActive(false);
         }
     }
 }

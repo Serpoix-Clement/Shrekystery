@@ -6,21 +6,38 @@ using UnityEngine;
 public class CleGlaconBehaviour : MonoBehaviour
 {
     public Canvas canvas;
-    public Canvas canvasInventaire;
+    private Collider coll;
 
     public bool glaconRamasse;
+    private bool dansZoneDeGlacon;
 
     void Start()
     {
         canvas.enabled = false;
-        canvasInventaire.enabled = false;
         glaconRamasse = false;
+        dansZoneDeGlacon = false;
+    }
+
+    private void Update()
+    {
+        if (dansZoneDeGlacon)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("glacon ramassé");
+                coll.gameObject.GetComponent<PlayerController>().glacon = true;
+                glaconRamasse = true;
+                canvas.enabled = false;
+                gameObject.SetActive(false);
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
+            coll = other;
             if(!glaconRamasse)
             {
                 canvas.enabled = true;
@@ -30,15 +47,12 @@ public class CleGlaconBehaviour : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Player"))
+        Debug.Log("dans la zone de glaçon");
+        if (other.CompareTag("Player"))
         {
-            if(Input.GetKeyDown(KeyCode.E))
-            {
-                glaconRamasse = true;
-                canvas.enabled = false;
-                canvasInventaire.enabled = true;
-                gameObject.SetActive(false);
-            }
+            Debug.Log("glacon a detecte joueur");
+            dansZoneDeGlacon = true;
+            
         }
     }
 
@@ -47,6 +61,7 @@ public class CleGlaconBehaviour : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             canvas.enabled = false;
+            dansZoneDeGlacon = false;
         }
     }
 }
