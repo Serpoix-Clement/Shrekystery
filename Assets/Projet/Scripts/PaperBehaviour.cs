@@ -7,6 +7,7 @@ public class PaperBehaviour : MonoBehaviour
 {
     public Canvas canvasPaper;
     public Canvas canvasE;
+    public Canvas canvasQuete;
     private bool active;
     private bool dansLaZone;
 
@@ -14,6 +15,7 @@ public class PaperBehaviour : MonoBehaviour
     {
         dansLaZone = false;
         canvasPaper.enabled = false;
+        canvasQuete.enabled = false;
         active = true;
     }
 
@@ -24,6 +26,7 @@ public class PaperBehaviour : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E))
             {
                 canvasPaper.enabled = active;
+                canvasQuete.enabled = true;
                 active = !active;
             }
         }

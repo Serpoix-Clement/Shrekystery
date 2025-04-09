@@ -1,10 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class FireScript : MonoBehaviour
 {
     public ParticleSystem PS;
+    public GameObject glacon;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +15,7 @@ public class FireScript : MonoBehaviour
             PS.Play();
             var main = PS.main;
             main.startSpeed = 5f;
+            glacon.transform.DOScale(Vector3.zero, 5f);
             StartCoroutine(compteur());
         }
     }
@@ -22,6 +24,7 @@ public class FireScript : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         PlayerController.Instance.glacon = false;
-        PlayerController.Instance.cleFinal = true;   
+        PlayerController.Instance.cleFinal = true;
+        PS.Stop();
     }
 }
